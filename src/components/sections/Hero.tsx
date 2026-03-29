@@ -36,9 +36,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/15 px-4 py-1.5 text-sm text-muted"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+          <span
+            className="relative flex h-3 w-3 shrink-0"
+            aria-hidden="true"
+          >
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-secondary/55 motion-reduce:animate-none" />
+            <span
+              className="relative inline-flex h-3 w-3 rounded-full bg-accent-secondary shadow-[0_0_10px_rgba(45,216,132,0.95),0_0_22px_rgba(45,216,132,0.5),inset_0_1px_0_rgba(255,255,255,0.55)] ring-2 ring-accent-secondary/70"
+            />
           </span>
           {siteCopy.hero.badge}
         </motion.div>

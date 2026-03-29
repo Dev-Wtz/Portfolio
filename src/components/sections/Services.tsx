@@ -2,7 +2,7 @@
 
 import { useRef, type ReactNode } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Code2, Palette, Sparkles, Zap } from "lucide-react";
+import { Bot, Code2, Layers, Palette, Sparkles, Zap } from "lucide-react";
 import {
   SERVICE_ORDER,
   SERVICE_ICONS,
@@ -18,6 +18,8 @@ const ICON_MAP: Record<ServiceIconName, ReactNode> = {
   Palette: <Palette className="h-6 w-6" />,
   Sparkles: <Sparkles className="h-6 w-6" />,
   Zap: <Zap className="h-6 w-6" />,
+  Bot: <Bot className="h-6 w-6" />,
+  Layers: <Layers className="h-6 w-6" />,
 };
 
 interface ServiceCardProps {
@@ -89,7 +91,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-32 px-6 md:py-40 overflow-hidden"
+      className="relative py-20 px-6 md:py-28 overflow-hidden"
       aria-labelledby="heading-services"
     >
       <SectionFibers preset="services" />

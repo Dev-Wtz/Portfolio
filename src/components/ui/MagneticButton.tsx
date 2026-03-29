@@ -33,6 +33,7 @@ interface MagneticButtonProps {
   "aria-label"?: string;
   onClick?: () => void;
   variant?: MagneticButtonVariant;
+  disabled?: boolean;
 }
 
 export default function MagneticButton({
@@ -44,6 +45,7 @@ export default function MagneticButton({
   onClick,
   type = "button",
   variant = "default",
+  disabled = false,
 }: MagneticButtonProps) {
   const prefersReducedMotion = useReducedMotion();
 
@@ -52,6 +54,7 @@ export default function MagneticButton({
     "shadow-none backdrop-blur-none",
     "outline-none [-webkit-tap-highlight-color:transparent] touch-manipulation",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/35",
+    "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-55",
     variantClass[variant],
     className
   );
@@ -59,7 +62,7 @@ export default function MagneticButton({
   const inner = "relative z-[1] inline-flex items-center justify-center gap-2";
 
   const motionProps =
-    prefersReducedMotion === true
+    disabled || prefersReducedMotion === true
       ? {}
       : {
           whileHover: { scale: 1.035, y: -2 },
@@ -78,6 +81,7 @@ export default function MagneticButton({
         className={shell}
         onClick={onClick}
         aria-label={ariaLabel}
+        aria-disabled={disabled || undefined}
         {...motionProps}
       >
         <span className={inner}>{children}</span>
@@ -91,6 +95,7 @@ export default function MagneticButton({
       className={shell}
       onClick={onClick}
       aria-label={ariaLabel}
+      disabled={disabled}
       {...motionProps}
     >
       <span className={inner}>{children}</span>

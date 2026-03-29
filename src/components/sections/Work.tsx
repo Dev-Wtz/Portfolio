@@ -135,7 +135,7 @@ function HorizontalScroll({ label }: { label: string }) {
   const x = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   return (
-    <div ref={containerRef} className="mt-16 overflow-hidden">
+    <div ref={containerRef} className="mt-10 overflow-hidden">
       <motion.div style={{ x }} className="flex gap-4">
         {[...Array(8)].map((_, i) => (
           <div
@@ -169,7 +169,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative py-32 px-6 md:py-40 overflow-hidden"
+      className="relative py-20 px-6 md:py-28 overflow-hidden"
       aria-labelledby="heading-work"
     >
       <SectionFibers preset="work" />
@@ -187,7 +187,7 @@ export default function Work() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center">
           <MagneticButton
             as="a"
             href="#contact"

@@ -81,6 +81,16 @@ export const siteCopy = {
       description:
         "Audits et refontes qui transforment les sites lents en expériences ultra-rapides. Maîtrise des Core Web Vitals.",
     },
+    aiAutomation: {
+      title: "Automatisation IA",
+      description:
+        "Flux métiers intelligents, intégrations API et assistants pour réduire les tâches répétitives. L’IA au service de votre productivité, avec des solutions fiables et maîtrisées.",
+    },
+    customSoftware: {
+      title: "Logiciel et application sur mesure",
+      description:
+        "Outils métier, portails internes ou produits SaaS conçus pour vos processus. Du cahier des charges au déploiement, une solution adaptée à vos utilisateurs et à votre croissance.",
+    },
   },
   work: {
     label: "Projets choisis",
@@ -136,13 +146,35 @@ export const siteCopy = {
     errName: "Le nom doit contenir au moins 2 caractères",
     errEmail: "Veuillez saisir une adresse e-mail valide",
     errMessage: "Le message doit contenir au moins 10 caractères",
+    errSend:
+      "L’envoi n’a pas abouti. Réessayez plus tard ou contactez-moi directement par e-mail.",
+    sending: "Envoi en cours…",
+  },
+  legal: {
+    backToSite: "← Retour au portfolio",
+    footerNote:
+      "Les présentes pages ont une valeur d’information. Pour toute question juridique précise, consultez un professionnel habilité.",
+  },
+  cookieBanner: {
+    title: "Respect de votre vie privée",
+    body:
+      "Nous utilisons des cookies strictement nécessaires au fonctionnement du site. D’autres cookies (mesure d’audience, réseaux sociaux) ne sont utilisés qu’avec votre accord. Consultez notre politique pour en savoir plus.",
+    acceptAll: "Tout accepter",
+    rejectOptional: "Refuser les cookies non essentiels",
+    policy: "Politique cookies",
   },
   footer: {
     rights: "© {{year}} Ethann Wantiez. Tous droits réservés.",
     ariaSocial: "Réseaux et liens",
+    ariaLegal: "Pages légales et conformité",
     linkWebsite: "Site web",
     linkEmail: "E-mail",
     linkLinks: "Profil / liens",
     linkContactForm: "Aller au formulaire de contact",
+    linkMentions: "Mentions légales",
+    linkPrivacy: "Confidentialité",
+    linkCookies: "Cookies",
+    linkTerms: "CGU",
+    linkA11y: "Accessibilité",
   },
 } as const;

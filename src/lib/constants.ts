@@ -1,10 +1,30 @@
 export type ProjectSlug = "luminary" | "vertex" | "nebula" | "horizon";
 
-export type ServiceKey = "web" | "ui" | "creative" | "perf";
+export type ServiceKey =
+  | "web"
+  | "ui"
+  | "creative"
+  | "perf"
+  | "aiAutomation"
+  | "customSoftware";
 
-export const SERVICE_ORDER: ServiceKey[] = ["web", "ui", "creative", "perf"];
+export const SERVICE_ORDER: ServiceKey[] = [
+  "web",
+  "ui",
+  "creative",
+  "perf",
+  "aiAutomation",
+  "customSoftware",
+];
 
-export const SERVICE_ICONS = ["Code2", "Palette", "Sparkles", "Zap"] as const;
+export const SERVICE_ICONS = [
+  "Code2",
+  "Palette",
+  "Sparkles",
+  "Zap",
+  "Bot",
+  "Layers",
+] as const;
 
 export type ServiceIconName = (typeof SERVICE_ICONS)[number];
 

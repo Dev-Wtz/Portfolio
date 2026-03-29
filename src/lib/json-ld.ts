@@ -36,6 +36,8 @@ export function buildHomeJsonLd(): Record<string, unknown> {
     siteCopy.services.ui.title,
     siteCopy.services.creative.title,
     siteCopy.services.perf.title,
+    siteCopy.services.aiAutomation.title,
+    siteCopy.services.customSoftware.title,
   ];
 
   const itemListElement = PROJECT_META.map((meta, i) => {

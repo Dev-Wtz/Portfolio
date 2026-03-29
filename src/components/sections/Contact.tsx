@@ -149,6 +149,9 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<FormErrors>(INITIAL_ERRORS);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
 
   const validateField = useCallback(
     (name: keyof FormData, value: string): string => {
@@ -196,8 +199,9 @@ export default function Contact() {
   );
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
+      setSubmitError(null);
 
       const newErrors: FormErrors = {
         name: { touched: true, error: validateField("name", formData.name) },
@@ -211,18 +215,56 @@ export default function Contact() {
       setErrors(newErrors);
 
       const hasErr = Object.values(newErrors).some((f) => f.error);
-      if (!hasErr) {
+      if (hasErr) return;
+
+      setIsSubmitting(true);
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            message: formData.message.trim(),
+            website: honeypot,
+          }),
+        });
+
+        interface ContactApiJson {
+          ok?: boolean;
+          error?: string;
+        }
+        let data: ContactApiJson = {};
+        try {
+          data = (await res.json()) as ContactApiJson;
+        } catch {
+          data = {};
+        }
+
+        if (!res.ok) {
+          setSubmitError(
+            typeof data.error === "string" && data.error.length > 0
+              ? data.error
+              : siteCopy.contact.errSend
+          );
+          return;
+        }
+
         setIsSubmitted(true);
+      } catch {
+        setSubmitError(siteCopy.contact.errSend);
+      } finally {
+        setIsSubmitting(false);
       }
     },
-    [formData, validateField]
+    [formData, honeypot, validateField]
   );
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="relative py-32 px-6 md:py-40 overflow-hidden"
+      className="relative py-20 px-6 md:py-28 overflow-hidden"
       aria-labelledby="heading-contact"
     >
       <SectionFibers preset="contact" />
@@ -266,10 +308,26 @@ export default function Contact() {
             ) : (
               <motion.form
                 key="form"
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-8 rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 shadow-[inset_0_1px_0_rgba(45,216,132,0.06)] sm:p-8 md:p-10"
+                onSubmit={(e) => {
+                  void handleSubmit(e);
+                }}
+                className="relative flex flex-col gap-8 rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 shadow-[inset_0_1px_0_rgba(45,216,132,0.06)] sm:p-8 md:p-10"
                 noValidate
               >
+                <div
+                  className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+                  aria-hidden="true"
+                >
+                  <label htmlFor="contact-website">Ne pas remplir ce champ</label>
+                  <input
+                    id="contact-website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
                 <AnimatedInput
                   label={siteCopy.contact.fieldName}
                   placeholder={siteCopy.contact.phName}
@@ -300,15 +358,25 @@ export default function Contact() {
                   onBlur={handleBlur}
                 />
 
+                {submitError ? (
+                  <p
+                    className="text-center text-sm font-medium text-red-300"
+                    role="alert"
+                  >
+                    {submitError}
+                  </p>
+                ) : null}
+
                 <div className="mt-4 flex justify-center">
                   <MagneticButton
                     type="submit"
                     variant="accent"
                     className="px-12 py-4 text-base font-semibold"
                     aria-label={siteCopy.contact.ariaSubmit}
+                    disabled={isSubmitting}
                   >
-                    <Send className="mr-2 h-4 w-4" />
-                    {siteCopy.contact.submit}
+                    <Send className="mr-2 h-4 w-4" aria-hidden="true" />
+                    {isSubmitting ? siteCopy.contact.sending : siteCopy.contact.submit}
                   </MagneticButton>
                 </div>
               </motion.form>

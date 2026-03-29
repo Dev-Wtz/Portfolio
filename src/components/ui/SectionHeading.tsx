@@ -29,7 +29,7 @@ export default function SectionHeading({
     <div
       ref={ref}
       className={cn(
-        "mb-16 md:mb-24",
+        "mb-10 md:mb-14",
         align === "center" && "text-center",
         className
       )}

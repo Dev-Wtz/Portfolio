@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { geistSans, playfairDisplay } from "@/lib/fonts";
 import { siteCopy } from "@/lib/site-copy";
 import { getSiteUrl } from "@/lib/seo";
+import CookieBanner from "@/components/legal/CookieBanner";
 import JsonLd from "@/components/seo/JsonLd";
 import "./globals.css";
 
@@ -19,9 +20,6 @@ const googleVerify = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }],
-  },
   title: {
     default: siteCopy.meta.title,
     template: `%s · ${siteCopy.seo.personName}`,
@@ -96,6 +94,7 @@ export default function RootLayout({
       <body className="noise min-h-full">
         <JsonLd />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
