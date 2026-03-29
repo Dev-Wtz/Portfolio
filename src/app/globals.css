@@ -1,26 +1,151 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #040605;
+  /* Moins de blanc : texte gris-vert */
+  --foreground: #c4d0c9;
+  /* Vert mat opaque, peu de luminance (vraiment mat) */
+  --accent: #3d6a50;
+  /* Vert brillant (accents, reflets) */
+  --accent-secondary: #2dd884;
+  --muted: #6e8a7c;
+  --card: #080b09;
+  --card-border: rgba(45, 216, 132, 0.14);
+  --font-serif: "Playfair Display", Georgia, serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(45, 216, 132, 0.28);
+  color: var(--foreground);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(8, 14, 11, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(45, 216, 132, 0.1);
+}
+
+/* Noise texture overlay */
+.noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/*
+ * Matte car paint — every paint layer uses opaque hex (no alpha) so coverage is 100%.
+ */
+.magnetic-matte-paint {
+  opacity: 1;
+  color: #e6ede8;
+  background-color: #172922;
+  background-image:
+    linear-gradient(162deg, #2c3c36 0%, #1e2f28 24%, #172922 50%),
+    linear-gradient(318deg, #172922 36%, #0f1b16 100%),
+    radial-gradient(
+      ellipse 130% 88% at 18% 5%,
+      #294438 0%,
+      #172922 54%
+    ),
+    radial-gradient(ellipse 95% 50% at 92% 88%, #12201b 0%, #172922 48%);
+  border: 1px solid #13251c;
+  box-shadow:
+    inset 0 1px 0 #25362f,
+    inset 0 -1px 0 #0f1a16;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.magnetic-matte-paint:hover {
+  background-color: #1b2e26;
+  border-color: #1a3228;
+  box-shadow:
+    inset 0 1px 0 #2a3a34,
+    inset 0 -1px 0 #101d18;
+}
+
+.magnetic-matte-paint:active {
+  background-color: #14221a;
+  border-color: #101c16;
+  box-shadow:
+    inset 0 2px 0 #0c1512,
+    inset 0 3px 6px #070d0b,
+    inset 0 -1px 0 #1a2822;
+}
+
+/* Gradient text : vert mat opaque → vert brillant (peu de blanc) */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(45, 216, 132, 0.22);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 216, 132, 0.38);
 }
