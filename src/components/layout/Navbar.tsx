@@ -31,8 +31,8 @@ export default function Navbar() {
             whileTap: { scale: 0.97 },
             transition: {
               type: "spring" as const,
-              stiffness: 420,
-              damping: 26,
+              stiffness: 520,
+              damping: 32,
             },
           },
     [prefersReducedMotion]
@@ -40,12 +40,13 @@ export default function Navbar() {
 
   const handleNavClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-      e.preventDefault();
       setIsMobileOpen(false);
-      const target = document.querySelector(href);
-      target?.scrollIntoView({ behavior: "smooth" });
+      if (prefersReducedMotion === true) {
+        e.preventDefault();
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      }
     },
-    []
+    [prefersReducedMotion]
   );
 
   useEffect(() => {
@@ -60,18 +61,26 @@ export default function Navbar() {
   }, [isMobileOpen]);
 
   useEffect(() => {
+    let rafId = 0;
     const readScroll = () => {
-      const y =
-        window.scrollY ??
-        window.pageYOffset ??
-        document.documentElement.scrollTop;
-      const p = Math.min(1, Math.max(0, y / SCROLL_RANGE_PX));
-      setScrollBlend(p);
+      if (rafId !== 0) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        const y =
+          window.scrollY ??
+          window.pageYOffset ??
+          document.documentElement.scrollTop;
+        const p = Math.min(1, Math.max(0, y / SCROLL_RANGE_PX));
+        setScrollBlend(p);
+      });
     };
 
     readScroll();
     window.addEventListener("scroll", readScroll, { passive: true });
-    return () => window.removeEventListener("scroll", readScroll);
+    return () => {
+      if (rafId !== 0) cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", readScroll);
+    };
   }, []);
 
   const shellStyle = useMemo(() => {
@@ -79,13 +88,13 @@ export default function Navbar() {
     const bgA = 0.16 + scrollBlend * 0.52;
     const borderA = 0.05 + scrollBlend * 0.14;
     const shadowA = 0.18 + scrollBlend * 0.28;
-    const blurPx = 12 + scrollBlend * 14;
     return {
       backgroundColor: `rgba(${r}, ${g}, ${b}, ${bgA})`,
       borderColor: `rgba(255, 255, 255, ${borderA})`,
       boxShadow: `0 8px 32px rgba(0, 0, 0, ${shadowA})`,
-      backdropFilter: `blur(${blurPx}px)`,
-      WebkitBackdropFilter: `blur(${blurPx}px)`,
+      /** Blur fixe : évite de recalculer le flou à chaque frame (gros gain sur le scroll). */
+      backdropFilter: "blur(22px)",
+      WebkitBackdropFilter: "blur(22px)",
     } satisfies React.CSSProperties;
   }, [scrollBlend]);
 

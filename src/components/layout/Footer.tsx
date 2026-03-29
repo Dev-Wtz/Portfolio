@@ -85,7 +85,7 @@ export default function Footer() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="mx-auto flex max-w-6xl flex-col items-center gap-5 sm:gap-8"
+        className="relative z-[3] mx-auto flex max-w-6xl flex-col items-center gap-5 sm:gap-8"
       >
         <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row sm:gap-6">
           <p className="text-center text-xs text-muted sm:text-left sm:text-sm">
@@ -101,7 +101,7 @@ export default function Footer() {
                     <a
                       href={link.href}
                       aria-label={link.label}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-card-border text-muted transition-all duration-300 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-card-border text-muted transition-[color,border-color] duration-300 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       <Icon className="h-4 w-4" aria-hidden="true" />
                     </a>

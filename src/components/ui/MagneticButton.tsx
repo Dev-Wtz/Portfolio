@@ -9,12 +9,12 @@ const shineSweep = cn(
   "before:pointer-events-none before:absolute before:inset-0 before:z-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent before:via-accent-secondary/35 before:to-transparent before:transition-transform before:duration-700 before:ease-out motion-safe:hover:before:translate-x-full"
 );
 
-/* Dark matte car paint — shine sweep matches "Me contacter" */
+/* Ghost CTA uses same surface as contact form / cards (see --surface-over-fibers). */
 const matteSolidShell = cn("magnetic-matte-paint", shineSweep);
 
 const ghostShell = cn(
-  "border border-accent/22 bg-accent/[0.08] text-foreground",
-  "hover:border-accent-secondary/45 hover:bg-accent/[0.14]",
+  "border border-accent/22 bg-surface-over-fibers text-foreground",
+  "hover:border-accent-secondary/45",
   shineSweep
 );
 
@@ -55,6 +55,8 @@ export default function MagneticButton({
     "outline-none [-webkit-tap-highlight-color:transparent] touch-manipulation",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/35",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-55",
+    /* Boutons pleins : −20 % mobile / −10 % PC (ghost : surface CSS uniquement) */
+    variant !== "ghost" && "opacity-80 md:opacity-90",
     variantClass[variant],
     className
   );
@@ -69,8 +71,8 @@ export default function MagneticButton({
           whileTap: { scale: 0.97 },
           transition: {
             type: "spring" as const,
-            stiffness: 420,
-            damping: 26,
+            stiffness: 520,
+            damping: 32,
           },
         };
 

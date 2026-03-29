@@ -32,7 +32,7 @@ function ProjectCardMobile({ project, index }: ProjectCardProps) {
   return (
     <article
       className={cn(
-        "flex shrink-0 snap-center flex-col overflow-hidden rounded-xl border border-card-border bg-card",
+        "flex shrink-0 snap-center flex-col overflow-hidden rounded-xl border border-card-border bg-surface-over-fibers",
         MOBILE_CARD_W,
         MOBILE_CARD_H
       )}
@@ -93,8 +93,8 @@ function ProjectCardDesktop({ project, index }: ProjectCardProps) {
     >
       <article
         className={cn(
-          "group relative overflow-hidden rounded-2xl border border-card-border bg-card",
-          "cursor-pointer transition-all duration-500",
+          "group relative overflow-hidden rounded-2xl border border-card-border bg-surface-over-fibers",
+          "cursor-pointer transition-[border-color,box-shadow] duration-500",
           "hover:border-white/10 hover:shadow-2xl hover:shadow-black/20"
         )}
         onPointerEnter={() => setIsHovered(true)}
@@ -138,10 +138,10 @@ function ProjectCardDesktop({ project, index }: ProjectCardProps) {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-0 left-0 h-0.5"
+            className="absolute bottom-0 left-0 h-0.5 w-full origin-left transform-gpu"
             style={{ background: project.color }}
-            initial={{ width: "0%" }}
-            animate={{ width: isHovered ? "100%" : "0%" }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: isHovered ? 1 : 0 }}
             transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           />
         </div>
@@ -184,7 +184,10 @@ function HorizontalScroll({ label }: { label: string }) {
 
   return (
     <div ref={containerRef} className="mt-6 overflow-hidden sm:mt-10">
-      <motion.div style={{ x }} className="flex gap-4">
+      <motion.div
+        style={{ x }}
+        className="flex gap-4 transform-gpu will-change-transform motion-reduce:will-change-auto"
+      >
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
@@ -221,7 +224,7 @@ export default function Work() {
       aria-labelledby="heading-work"
     >
       <SectionFibers preset="work" />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="relative z-[3] mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           titleId="heading-work"
           label={siteCopy.work.label}
@@ -232,7 +235,8 @@ export default function Work() {
 
       {/* Mobile: horizontal scroll carousel */}
       <div
-        className="flex gap-3 overflow-x-auto scroll-smooth px-4 pb-4 snap-x snap-mandatory sm:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        data-lenis-prevent
+        className="relative z-[3] flex gap-3 overflow-x-auto scroll-smooth px-4 pb-4 snap-x snap-mandatory sm:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         role="list"
       >
         {projects.map((project, i) => (
@@ -242,7 +246,7 @@ export default function Work() {
       </div>
 
       {/* Desktop: grid */}
-      <div className="mx-auto hidden max-w-6xl px-6 sm:block">
+      <div className="relative z-[3] mx-auto hidden max-w-6xl px-6 sm:block">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {projects.map((project, i) => (
             <ProjectCardDesktop key={project.slug} project={project} index={i} />
@@ -250,7 +254,7 @@ export default function Work() {
         </div>
       </div>
 
-      <div className="mt-6 px-4 text-center sm:mt-8 sm:px-6">
+      <div className="relative z-[3] mt-6 px-4 text-center sm:mt-8 sm:px-6">
         <MagneticButton
           as="a"
           href="#contact"

@@ -44,13 +44,9 @@ export const siteCopy = {
     badge: "Disponible pour de nouveaux projets",
     intro1: "Bonjour !",
     intro2: " Moi.. C'est Ethann",
-    /** Sous le H1 : texte neutre + partie en vert (gradient-text) */
+    /** Sous le H1 : tagline entière en gradient-text */
     roleLead: "Je suis",
     roleTitleHighlight: "Développeur web & IA freelance",
-    subtitleBefore: "Je conçois ",
-    subtitleHighlight: "des expériences qui convertissent",
-    subtitleAfter:
-      ". Du concept au code, chaque pixel est pensé pour servir votre objectif.",
     ctaWork: "Voir mes projets",
     ctaContact: "Me contacter",
     ariaWork: "Voir mes réalisations",
@@ -134,20 +130,29 @@ export const siteCopy = {
       "Un projet en tête ? Transformons votre vision en expérience numérique qui se démarque.",
     fieldName: "Nom",
     fieldEmail: "E-mail",
+    fieldPhone: "Téléphone",
     fieldMessage: "Message",
     phName: "Votre nom…",
     phEmail: "Votre adresse e-mail…",
-    phMessage: "Votre message…",
+    phPhone: "Ex. 6 12 34 56 78 (sans indicatif)",
+    phMessage: "Votre message (30 à 500 caractères)…",
     submit: "Envoyer le message",
     ariaSubmit: "Envoyer le message",
+    formAriaLabel: "Formulaire de contact",
     successTitle: "Message envoyé !",
     successBody:
       "Merci pour votre message. Je vous réponds sous 24 heures.",
-    errName: "Le nom doit contenir au moins 2 caractères",
+    errName:
+      "Le nom ne doit pas contenir de chiffres et doit comporter entre 2 et 120 caractères",
     errEmail: "Veuillez saisir une adresse e-mail valide",
-    errMessage: "Le message doit contenir au moins 10 caractères",
+    errPhone:
+      "Choisissez l’indicatif pays et un numéro valide (le 0 initial est retiré automatiquement pour la France et l’UE)",
+    ariaPhonePrefix: "Indicatif pays du numéro de téléphone",
+    errMessage: "Le message doit contenir entre 30 et 500 caractères",
     errSend:
       "L’envoi n’a pas abouti. Réessayez plus tard ou contactez-moi directement par e-mail.",
+    errRateLimit:
+      "Trop de tentatives d’envoi. Merci de patienter un quart d’heure avant de réessayer.",
     sending: "Envoi en cours…",
   },
   legal: {

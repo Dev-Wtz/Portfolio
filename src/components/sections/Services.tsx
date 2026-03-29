@@ -49,10 +49,10 @@ function ServiceCardMobile({
   return (
     <article
       className={cn(
-        "flex shrink-0 snap-center flex-col overflow-hidden rounded-lg border border-card-border bg-card p-3",
+        "flex shrink-0 snap-center flex-col overflow-hidden rounded-lg border border-card-border bg-surface-over-fibers p-3",
         MOBILE_CARD_W,
         MOBILE_CARD_H,
-        "transition-all duration-500",
+        "transition-[border-color,box-shadow] duration-500",
         "active:border-accent/20"
       )}
     >
@@ -96,6 +96,7 @@ function ServiceCardDesktop({
     <motion.div
       ref={cardRef}
       style={{ y }}
+      className="transform-gpu will-change-transform motion-reduce:will-change-auto"
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
@@ -106,8 +107,8 @@ function ServiceCardDesktop({
     >
       <article
         className={cn(
-          "group relative overflow-hidden rounded-2xl border border-card-border bg-card p-6 md:p-8",
-          "transition-all duration-500",
+          "group relative overflow-hidden rounded-2xl border border-card-border bg-surface-over-fibers p-6 md:p-8",
+          "transition-[border-color,box-shadow] duration-500",
           "hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5"
         )}
       >
@@ -144,7 +145,7 @@ export default function Services() {
       aria-labelledby="heading-services"
     >
       <SectionFibers preset="services" />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="relative z-[3] mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           titleId="heading-services"
           label={siteCopy.services.label}
@@ -155,7 +156,8 @@ export default function Services() {
 
       {/* Mobile: horizontal scroll */}
       <div
-        className="flex gap-2.5 overflow-x-auto scroll-smooth px-4 pb-4 snap-x snap-mandatory sm:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        data-lenis-prevent
+        className="relative z-[3] flex gap-2.5 overflow-x-auto scroll-smooth px-4 pb-4 snap-x snap-mandatory sm:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         role="list"
       >
         {SERVICE_ORDER.map((serviceKey, i) => {
@@ -173,7 +175,7 @@ export default function Services() {
       </div>
 
       {/* Desktop: grid */}
-      <div className="mx-auto hidden max-w-6xl px-6 sm:block">
+      <div className="relative z-[3] mx-auto hidden max-w-6xl px-6 sm:block">
         <div className="grid gap-5 sm:grid-cols-2 lg:gap-6">
           {SERVICE_ORDER.map((serviceKey, i) => {
             const block = siteCopy.services[serviceKey];

@@ -176,10 +176,11 @@ function EtherealLightPlane() {
     mat.uniforms.uResolution.value.set(canvas.width, canvas.height);
 
     if (light) {
-      const ptr = light.pointerRef.current;
+      const { pointerRef, hoverTargetRef, pulseRef, rippleRef } = light;
+      const ptr = pointerRef.current;
       mat.uniforms.uMouse.value.set(ptr.x, ptr.y);
 
-      const target = light.hoverTargetRef.current;
+      const target = hoverTargetRef.current;
       const k = 1 - Math.exp(-12 * delta);
       const sh = smoothHover.current;
       sh.x += (target.x - sh.x) * k;
@@ -187,13 +188,13 @@ function EtherealLightPlane() {
       sh.z += (target.strength - sh.z) * k;
       mat.uniforms.uHover.value.set(sh.x, sh.y, sh.z);
 
-      const pr = light.pulseRef.current;
-      light.pulseRef.current = pr * Math.exp(-5.5 * delta);
-      if (light.pulseRef.current < 0.004) light.pulseRef.current = 0;
-      mat.uniforms.uPulse.value = light.pulseRef.current;
+      let nextPulse = pulseRef.current * Math.exp(-5.5 * delta);
+      if (nextPulse < 0.004) nextPulse = 0;
+      pulseRef.current = nextPulse;
+      mat.uniforms.uPulse.value = nextPulse;
       mat.uniforms.uRipple.value.set(
-        light.rippleRef.current.x,
-        light.rippleRef.current.y
+        rippleRef.current.x,
+        rippleRef.current.y
       );
     } else {
       const { x, y } = state.pointer;
@@ -221,7 +222,10 @@ function EtherealLightPlane() {
 
 function getDpr(): [number, number] {
   if (typeof window === "undefined") return [1, 1];
-  return [1, Math.min(window.devicePixelRatio, 2)];
+  const dpr = window.devicePixelRatio;
+  const w = window.innerWidth;
+  const cap = w < 640 ? 1.2 : w < 1024 ? 1.5 : 2;
+  return [1, Math.min(dpr, cap)];
 }
 
 export default function ParticleField() {

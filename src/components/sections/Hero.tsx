@@ -28,16 +28,16 @@ export default function Hero() {
       <SectionFibers preset="hero" />
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 mx-auto w-full max-w-5xl text-center"
+        className="relative z-10 mx-auto w-full max-w-5xl text-center transform-gpu will-change-transform motion-reduce:will-change-auto"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-4 inline-flex max-w-[min(100%,22rem)] items-center gap-1.5 rounded-full border border-accent/35 bg-accent/15 px-3 py-1 text-xs leading-snug text-muted sm:mb-6 sm:max-w-none sm:gap-2 sm:px-4 sm:py-1.5 sm:text-sm"
+          className="mb-4 inline-flex max-w-[min(100%,22rem)] items-center gap-1.5 rounded-full border border-card-border bg-surface-over-fibers px-3 py-1 text-xs leading-snug text-muted sm:mb-6 sm:max-w-none sm:gap-2 sm:px-4 sm:py-1.5 sm:text-sm"
         >
           <span
-            className="relative flex h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3"
+            className="relative flex h-2.5 w-2.5 shrink-0 opacity-80 sm:h-3 sm:w-3 md:opacity-90"
             aria-hidden="true"
           >
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-secondary/55 motion-reduce:animate-none" />
@@ -49,16 +49,6 @@ export default function Hero() {
         </motion.div>
 
         <HeroAnimatedTitle />
-
-        <div className="mt-3 sm:mt-4 md:mt-6">
-          <p className="mx-auto w-[85%] max-w-2xl text-sm leading-relaxed text-muted sm:w-full sm:text-lg md:text-xl lg:text-2xl">
-            {siteCopy.hero.subtitleBefore}
-            <span className="gradient-text font-semibold">
-              {siteCopy.hero.subtitleHighlight}
-            </span>
-            {siteCopy.hero.subtitleAfter}
-          </p>
-        </div>
 
         <div className="mx-auto mt-8 grid w-full max-w-sm grid-cols-2 items-stretch justify-items-stretch gap-2 sm:mt-10 sm:flex sm:max-w-none sm:w-full sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
           <MagneticButton

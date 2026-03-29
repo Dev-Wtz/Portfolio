@@ -34,12 +34,9 @@ export function useLightReactiveHandlers(
     [ctx, strength]
   );
 
-  const onPointerLeave = useCallback(
-    (_e: React.PointerEvent<HTMLElement>) => {
-      ctx?.clearHover();
-    },
-    [ctx]
-  );
+  const onPointerLeave = useCallback(() => {
+    ctx?.clearHover();
+  }, [ctx]);
 
   const onFocus = useCallback(
     (e: React.FocusEvent<HTMLElement>) => {
@@ -48,12 +45,9 @@ export function useLightReactiveHandlers(
     [ctx, strength]
   );
 
-  const onBlur = useCallback(
-    (_e: React.FocusEvent<HTMLElement>) => {
-      ctx?.clearHover();
-    },
-    [ctx]
-  );
+  const onBlur = useCallback(() => {
+    ctx?.clearHover();
+  }, [ctx]);
 
   return useMemo(() => {
     if (!ctx) return EMPTY_HANDLERS;

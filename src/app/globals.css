@@ -10,8 +10,17 @@
   --accent-secondary: #2dd884;
   --muted: #6e8a7c;
   --card: #080b09;
+  /* Form / cards / ghost CTA / hero badge — mobile : −20 % vs 0,9 */
+  --surface-over-fibers: rgba(8, 11, 9, 0.72);
   --card-border: rgba(45, 216, 132, 0.14);
   --font-serif: "Playfair Display", Georgia, serif;
+}
+
+@media (min-width: 768px) {
+  :root {
+    /* PC : −10 % vs 0,9 */
+    --surface-over-fibers: rgba(8, 11, 9, 0.81);
+  }
 }
 
 @theme inline {
@@ -58,6 +67,11 @@ body {
 ::selection {
   background: rgba(45, 216, 132, 0.28);
   color: var(--foreground);
+}
+
+/* Same opacity as contact form — cards, ghost CTA, form shell */
+.bg-surface-over-fibers {
+  background-color: var(--surface-over-fibers);
 }
 
 /* Glassmorphism utility */
@@ -124,12 +138,36 @@ body {
     inset 0 -1px 0 #1a2822;
 }
 
-/* Gradient text : vert mat opaque → vert brillant (peu de blanc) */
+/* Gradient text : vert mat → vert brillant (léger lift vers le clair au centre) */
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent-secondary) 82%, white 18%) 52%,
+    var(--accent-secondary) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Hero H1 + tagline: fine outer edge for contrast over fibers (WebKit + Chromium). */
+.hero-letter-outline {
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.88);
+}
+
+/* Settled-state shine (sync with HeroAnimatedTitle filter strings for reduced-motion). */
+.hero-letters-shine-rest-foreground {
+  filter: brightness(1.08)
+    drop-shadow(0 0 12px rgba(220, 232, 226, 0.2))
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.12));
+}
+
+.hero-letters-shine-rest-accent {
+  filter: brightness(1.1)
+    drop-shadow(0 0 14px rgba(45, 216, 132, 0.26))
+    drop-shadow(0 0 6px rgba(45, 216, 132, 0.17));
 }
 
 /* Smooth scrollbar */
