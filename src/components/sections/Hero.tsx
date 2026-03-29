@@ -23,7 +23,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 pb-10 pt-6 sm:min-h-screen sm:px-6 sm:pb-0 sm:pt-0"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-1.5 pb-10 pt-6 sm:min-h-screen sm:px-6 sm:pb-0 sm:pt-0"
     >
       <SectionFibers preset="hero" />
       <motion.div

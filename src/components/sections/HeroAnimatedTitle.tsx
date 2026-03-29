@@ -117,10 +117,10 @@ export default function HeroAnimatedTitle() {
   return (
     <div className="flex w-full flex-col items-center gap-1 text-center sm:gap-1.5">
       <h1
-        className="relative mx-auto w-[90%] max-w-5xl px-0 text-center font-serif text-[clamp(1.1rem,5.35vw,2.2rem)] font-bold leading-[1.12] tracking-tight sm:w-full sm:px-2 sm:text-6xl sm:leading-tight md:text-7xl lg:text-8xl"
+        className="relative mx-auto w-full max-w-5xl px-0 text-center font-serif text-[clamp(1.55rem,11.25vw,3.75rem)] font-bold leading-[1.08] tracking-[-0.02em] sm:px-2 sm:text-6xl sm:leading-tight sm:tracking-tight md:text-7xl lg:text-8xl"
         aria-live="polite"
       >
-        <span className="inline-block max-w-full break-words [overflow-wrap:anywhere] max-sm:whitespace-nowrap max-sm:break-normal">
+        <span className="inline-block w-full max-w-full break-words [overflow-wrap:anywhere] max-sm:whitespace-nowrap max-sm:break-normal">
           {display}
           {caretVisible ? (
             <span
