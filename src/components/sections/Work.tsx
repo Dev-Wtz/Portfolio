@@ -10,6 +10,10 @@ import { siteCopy } from "@/lib/site-copy";
 import { cn } from "@/lib/utils";
 import SectionFibers from "@/components/layout/SectionFibers";
 
+/** Same footprint as service cards on mobile (horizontal scroll). */
+const MOBILE_CARD_W = "w-[min(85vw,18.5rem)]";
+const MOBILE_CARD_H = "h-[21.5rem]";
+
 interface ProjectDisplay {
   slug: ProjectSlug;
   color: string;
@@ -24,7 +28,51 @@ interface ProjectCardProps {
   index: number;
 }
 
-function ProjectCard({ project, index }: ProjectCardProps) {
+function ProjectCardMobile({ project, index }: ProjectCardProps) {
+  return (
+    <article
+      className={cn(
+        "flex shrink-0 snap-center flex-col overflow-hidden rounded-xl border border-card-border bg-card",
+        MOBILE_CARD_W,
+        MOBILE_CARD_H
+      )}
+    >
+      <div className="relative h-[9.25rem] shrink-0 overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(135deg, ${project.color}22, ${project.color}08)`,
+          }}
+        />
+        <div className="absolute bottom-2 right-3 font-serif text-5xl font-bold leading-none opacity-5">
+          {String(index + 1).padStart(2, "0")}
+        </div>
+      </div>
+      <div className="flex min-h-0 flex-1 flex-col p-3">
+        <div className="mb-1.5 flex shrink-0 items-center justify-between gap-2">
+          <span
+            className="truncate rounded-full px-2.5 py-0.5 text-[0.65rem] font-medium uppercase tracking-wider"
+            style={{
+              color: project.color,
+              background: `${project.color}15`,
+            }}
+          >
+            {project.category}
+          </span>
+          <span className="shrink-0 text-[0.65rem] text-muted">{project.year}</span>
+        </div>
+        <h3 className="mb-1 line-clamp-2 shrink-0 font-serif text-base font-semibold leading-snug">
+          {project.title}
+        </h3>
+        <p className="min-h-0 flex-1 text-xs leading-relaxed text-muted line-clamp-4">
+          {project.description}
+        </p>
+      </div>
+    </article>
+  );
+}
+
+function ProjectCardDesktop({ project, index }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-5%" });
   const [isHovered, setIsHovered] = useState(false);
@@ -135,12 +183,12 @@ function HorizontalScroll({ label }: { label: string }) {
   const x = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   return (
-    <div ref={containerRef} className="mt-10 overflow-hidden">
+    <div ref={containerRef} className="mt-6 overflow-hidden sm:mt-10">
       <motion.div style={{ x }} className="flex gap-4">
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="flex shrink-0 items-center gap-4 text-6xl font-bold text-white/[0.02] md:text-8xl"
+            className="flex shrink-0 items-center gap-4 text-4xl font-bold text-white/[0.02] sm:text-6xl md:text-8xl"
           >
             <span className="font-serif whitespace-nowrap">{label}</span>
             <span className="text-accent/20" aria-hidden="true">
@@ -169,36 +217,50 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative py-20 px-6 md:py-28 overflow-hidden"
+      className="relative overflow-hidden py-12 sm:py-20 md:py-28"
       aria-labelledby="heading-work"
     >
       <SectionFibers preset="work" />
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           titleId="heading-work"
           label={siteCopy.work.label}
           title={siteCopy.work.title}
           description={siteCopy.work.description}
         />
+      </div>
 
+      {/* Mobile: horizontal scroll carousel */}
+      <div
+        className="flex gap-3 overflow-x-auto scroll-smooth px-4 pb-4 snap-x snap-mandatory sm:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        role="list"
+      >
+        {projects.map((project, i) => (
+          <ProjectCardMobile key={project.slug} project={project} index={i} />
+        ))}
+        <div className="w-1 shrink-0" aria-hidden="true" />
+      </div>
+
+      {/* Desktop: grid */}
+      <div className="mx-auto hidden max-w-6xl px-6 sm:block">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
+            <ProjectCardDesktop key={project.slug} project={project} index={i} />
           ))}
         </div>
+      </div>
 
-        <div className="mt-8 text-center">
-          <MagneticButton
-            as="a"
-            href="#contact"
-            variant="default"
-            className="px-10 py-4 text-sm font-semibold"
-            aria-label={siteCopy.work.ariaCta}
-          >
-            {siteCopy.work.cta}
-            <ArrowUpRight className="ml-2 h-4 w-4" />
-          </MagneticButton>
-        </div>
+      <div className="mt-6 px-4 text-center sm:mt-8 sm:px-6">
+        <MagneticButton
+          as="a"
+          href="#contact"
+          variant="default"
+          className="px-8 py-3 text-xs font-semibold sm:px-10 sm:py-4 sm:text-sm"
+          aria-label={siteCopy.work.ariaCta}
+        >
+          {siteCopy.work.cta}
+          <ArrowUpRight className="ml-2 h-4 w-4" />
+        </MagneticButton>
       </div>
 
       <HorizontalScroll label={siteCopy.work.marquee} />

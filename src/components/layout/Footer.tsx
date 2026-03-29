@@ -78,17 +78,17 @@ export default function Footer() {
   return (
     <footer
       ref={ref}
-      className="relative z-10 overflow-hidden border-t border-card-border bg-background px-6 py-8 md:py-10"
+      className="relative z-10 overflow-hidden border-t border-card-border bg-background px-4 py-6 sm:px-6 sm:py-8 md:py-10"
     >
       <SectionFibers preset="footer" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="mx-auto flex max-w-6xl flex-col items-center gap-8"
+        className="mx-auto flex max-w-6xl flex-col items-center gap-5 sm:gap-8"
       >
-        <div className="flex w-full flex-col items-center justify-between gap-6 sm:flex-row">
-          <p className="text-center text-sm text-muted sm:text-left">
+        <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row sm:gap-6">
+          <p className="text-center text-xs text-muted sm:text-left sm:text-sm">
             {rightsText}
           </p>
 
@@ -114,7 +114,7 @@ export default function Footer() {
 
         <nav
           aria-label={siteCopy.footer.ariaLegal}
-          className="flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-card-border/60 pt-6 text-xs text-muted sm:text-sm"
+          className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1.5 border-t border-card-border/60 pt-4 text-[0.65rem] text-muted sm:gap-x-4 sm:gap-y-2 sm:pt-6 sm:text-sm"
         >
           {legalLinks.map((item) => (
             <Link

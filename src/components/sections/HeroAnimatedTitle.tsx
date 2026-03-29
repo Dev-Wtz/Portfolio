@@ -117,7 +117,7 @@ export default function HeroAnimatedTitle() {
   return (
     <div className="flex w-full flex-col items-center gap-1 text-center sm:gap-1.5">
       <h1
-        className="relative mx-auto w-full max-w-5xl px-2 text-center font-serif text-4xl font-bold leading-tight tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+        className="relative mx-auto w-[85%] max-w-5xl px-0 text-center font-serif text-[clamp(2rem,10vw,3.15rem)] font-bold leading-[1.1] tracking-tight sm:w-full sm:px-2 sm:text-6xl sm:leading-tight md:text-7xl lg:text-8xl"
         aria-live="polite"
       >
         <span className="inline-block max-w-full break-words [overflow-wrap:anywhere]">
@@ -135,14 +135,14 @@ export default function HeroAnimatedTitle() {
 
       {showTagline ? (
         <p
-          className="max-w-3xl text-lg font-medium leading-snug sm:text-xl md:text-2xl lg:text-3xl"
+          className="w-[85%] max-w-3xl text-base font-medium leading-snug sm:w-full sm:text-xl md:text-2xl lg:text-3xl"
           aria-live="polite"
         >
           <span className="text-foreground/90">{taglinePlain}</span>
           <span className="gradient-text">{taglineGreen}</span>
           {taglineCaretVisible ? (
             <span
-              className="ml-0.5 inline-block w-[0.06em] min-w-[2px] animate-pulse align-baseline font-sans text-lg font-light text-foreground/80 sm:text-xl md:text-2xl lg:text-3xl"
+              className="ml-0.5 inline-block w-[0.06em] min-w-[2px] animate-pulse align-baseline font-sans text-base font-light text-foreground/80 sm:text-xl md:text-2xl lg:text-3xl"
               aria-hidden="true"
             >
               |

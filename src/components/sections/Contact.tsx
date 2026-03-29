@@ -57,7 +57,7 @@ function AnimatedInput({
     <div className="relative">
       <label
         htmlFor={name}
-        className="mb-2.5 block text-base font-medium tracking-wide text-foreground/90"
+        className="mb-1.5 block text-sm font-medium tracking-wide text-foreground/90 sm:mb-2.5 sm:text-base"
       >
         {label}
       </label>
@@ -69,9 +69,9 @@ function AnimatedInput({
           value={value}
           onChange={(e) => onChange(name, e.target.value)}
           onBlur={() => onBlur(name)}
-          rows={type === "textarea" ? 6 : undefined}
+          rows={type === "textarea" ? 4 : undefined}
           className={cn(
-            "w-full rounded-xl border px-4 py-3.5 text-base leading-relaxed text-foreground",
+            "w-full rounded-xl border px-3.5 py-2.5 text-sm leading-relaxed text-foreground sm:px-4 sm:py-3.5 sm:text-base",
             "bg-accent/[0.06] shadow-[inset_0_1px_0_rgba(45,216,132,0.08)]",
             "placeholder:text-muted placeholder:opacity-90",
             "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background",
@@ -80,7 +80,7 @@ function AnimatedInput({
               : isValid
                 ? "border-accent/50 focus:border-accent/45 focus:ring-accent/40"
                 : "border-accent/25 focus:border-accent-secondary/55 focus:ring-accent-secondary/35",
-            type === "textarea" && "min-h-[9.5rem] resize-y"
+            type === "textarea" && "min-h-[7rem] resize-y sm:min-h-[9.5rem]"
           )}
           placeholder={placeholder}
           aria-invalid={!!hasError}
@@ -264,7 +264,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-20 px-6 md:py-28 overflow-hidden"
+      className="relative overflow-hidden py-12 px-4 sm:py-20 sm:px-6 md:py-28"
       aria-labelledby="heading-contact"
     >
       <SectionFibers preset="contact" />
@@ -289,7 +289,7 @@ export default function Contact() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col items-center rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.08] p-10 text-center sm:p-12"
+                className="flex flex-col items-center rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.08] p-6 text-center sm:p-10 md:p-12"
               >
                 <motion.div
                   initial={{ scale: 0 }}
@@ -311,7 +311,7 @@ export default function Contact() {
                 onSubmit={(e) => {
                   void handleSubmit(e);
                 }}
-                className="relative flex flex-col gap-8 rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 shadow-[inset_0_1px_0_rgba(45,216,132,0.06)] sm:p-8 md:p-10"
+                className="relative flex flex-col gap-5 rounded-2xl border border-accent/20 bg-accent/[0.04] p-4 shadow-[inset_0_1px_0_rgba(45,216,132,0.06)] sm:gap-8 sm:p-6 md:p-10"
                 noValidate
               >
                 <div
@@ -367,11 +367,11 @@ export default function Contact() {
                   </p>
                 ) : null}
 
-                <div className="mt-4 flex justify-center">
+                <div className="mt-2 flex justify-center sm:mt-4">
                   <MagneticButton
                     type="submit"
                     variant="accent"
-                    className="px-12 py-4 text-base font-semibold"
+                    className="px-8 py-3 text-sm font-semibold sm:px-12 sm:py-4 sm:text-base"
                     aria-label={siteCopy.contact.ariaSubmit}
                     disabled={isSubmitting}
                   >

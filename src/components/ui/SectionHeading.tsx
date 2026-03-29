@@ -29,7 +29,7 @@ export default function SectionHeading({
     <div
       ref={ref}
       className={cn(
-        "mb-10 md:mb-14",
+        "mb-8 md:mb-14",
         align === "center" && "text-center",
         className
       )}
@@ -38,7 +38,7 @@ export default function SectionHeading({
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="mb-4 inline-block font-mono text-sm uppercase tracking-widest text-accent"
+        className="mb-2 inline-block font-mono text-xs uppercase tracking-widest text-accent sm:mb-4 sm:text-sm"
       >
         {label}
       </motion.p>
@@ -51,7 +51,7 @@ export default function SectionHeading({
           delay: 0.1,
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
-        className="font-serif text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl"
+        className="font-serif text-2xl font-semibold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
       >
         {title}
       </motion.h2>
@@ -64,7 +64,7 @@ export default function SectionHeading({
             delay: 0.2,
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
-          className="mx-auto mt-6 max-w-2xl text-lg text-muted"
+          className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-lg"
         >
           {description}
         </motion.p>

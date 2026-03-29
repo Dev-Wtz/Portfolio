@@ -169,14 +169,14 @@ export default function Navbar() {
         aria-hidden={!isMobileOpen}
       >
         <nav aria-label={siteCopy.nav.ariaMobile}>
-          <ul className="flex flex-col items-center gap-5">
+          <ul className="flex flex-col items-center gap-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <motion.a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={cn(
-                    "inline-flex items-center justify-center rounded-2xl px-6 py-3 font-serif text-3xl font-semibold text-foreground",
+                    "inline-flex items-center justify-center rounded-2xl px-6 py-2.5 font-serif text-2xl font-semibold text-foreground sm:text-3xl",
                     "transition-colors duration-200 hover:text-accent",
                     "outline-none [-webkit-tap-highlight-color:transparent]",
                     "focus-visible:ring-2 focus-visible:ring-accent focus-visible:rounded-2xl"
