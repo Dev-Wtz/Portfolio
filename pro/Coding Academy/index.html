@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZERODAY // ACADEMY - Hacker Coding Platform</title>
+    <meta name="description" content="Plateforme d'apprentissage interactif du code et de la cybersécurité dans une interface cyberpunk/hacker.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="crt-overlay">
+    <!-- Matrix Canvas Background -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Top Security Header / Status Bar -->
+    <header class="cyber-header">
+        <div class="header-left">
+            <div class="logo-group">
+                <span class="cyber-icon">⚡</span>
+                <span class="brand-title">ZERODAY<span class="accent-glow">//</span>ACADEMY</span>
+            </div>
+            <div class="sys-badge">
+                <span class="pulse-dot"></span>
+                <span class="sys-status">SYSTEM: ONLINE</span>
+            </div>
+        </div>
+
+        <div class="header-center">
+            <nav class="nav-links">
+                <a href="#hero-cli" class="nav-item active" data-tab="cli"><span class="nav-num">01.</span>TERMINAL</a>
+                <a href="#courses" class="nav-item" data-tab="courses"><span class="nav-num">02.</span>SKILL_TREE</a>
+                <a href="#sandbox" class="nav-item" data-tab="sandbox"><span class="nav-num">03.</span>CTF_SANDBOX</a>
+                <a href="#leaderboard" class="nav-item" data-tab="leaderboard"><span class="nav-num">04.</span>WALL_OF_FAME</a>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <!-- Audio Toggle -->
+            <button id="btn-audio" class="cyber-btn sm" title="Bruits de clavier & effets rétro">
+                <span class="btn-icon">🔊</span> AUDIO: <span id="audio-state">ON</span>
+            </button>
+            <!-- Visual Effects Toggles -->
+            <button id="btn-crt" class="cyber-btn sm active" title="Toggle effet écran CRT">
+                <span class="btn-icon">📺</span> CRT
+            </button>
+            <button id="btn-matrix" class="cyber-btn sm active" title="Toggle pluie Matrix">
+                <span class="btn-icon">🌧️</span> MATRIX
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-layout">
+
+        <!-- SECTION 1: HERO CLI TERMINAL -->
+        <section id="hero-cli" class="cyber-section">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="cyber-tag">[ LEVEL_01 :: INITIATION ]</div>
+                    <h1 class="hero-title">
+                        MAÎTRISEZ L'ART DU <span class="glitch-text" data-text="CYBER-CODING">CYBER-CODING</span>
+                    </h1>
+                    <p class="hero-desc">
+                        Apprenez la programmation système, l'analyse d'exploits, le reverse engineering et la cryptographie à travers des quêtes interactives en temps réel.
+                    </p>
+                    
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <span class="stat-value" id="user-rank">SCRIPT KIDDIE</span>
+                            <span class="stat-label">VOTRE RANG</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-value" id="user-xp">0 XP</span>
+                            <span class="stat-label">EXPERIENCE</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-value" id="user-solved">0/6</span>
+                            <span class="stat-label">QUÊTES RÉSOLUES</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Terminal Box -->
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="window-buttons">
+                            <span class="btn-circle red"></span>
+                            <span class="btn-circle yellow"></span>
+                            <span class="btn-circle green"></span>
+                        </div>
+                        <div class="terminal-title">bash - zero-day-shell v4.2</div>
+                        <div class="terminal-actions">
+                            <span class="term-status">PORT: 8080</span>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="terminal-output">
+                        <div class="term-line system-msg">========================================================</div>
+                        <div class="term-line system-msg"> ZERODAY ACADEMY // CYBER TERMINAL OS v4.2</div>
+                        <div class="term-line system-msg"> Taper <span class="hl-cmd">'help'</span> pour la liste des commandes.</div>
+                        <div class="term-line system-msg"> Taper <span class="hl-cmd">'start'</span> pour lancer la 1ère quête de code.</div>
+                        <div class="term-line system-msg">========================================================</div>
+                    </div>
+                    <div class="terminal-input-row">
+                        <span class="prompt-symbol">root@zeroday:~#</span>
+                        <input type="text" id="terminal-input" placeholder="Entrer une commande (ex: help, start, courses)..." autocomplete="off" spellcheck="false">
+                        <button id="terminal-send" class="btn-send">EXEC ↵</button>
+                    </div>
+                    <div class="quick-commands">
+                        <span class="qc-label">Quick Cmds:</span>
+                        <button class="qc-btn" data-cmd="help">help</button>
+                        <button class="qc-btn" data-cmd="start">start</button>
+                        <button class="qc-btn" data-cmd="courses">courses</button>
+                        <button class="qc-btn" data-cmd="rank">rank</button>
+                        <button class="qc-btn" data-cmd="clear">clear</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SKILL TREE / COURSES -->
+        <section id="courses" class="cyber-section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">📂</span> ARBRE DE COMPÉTENCES & CURRICULUM</h2>
+                <div class="section-line"></div>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">TOUT</button>
+                    <button class="filter-btn" data-filter="bash">SHELL & BASH</button>
+                    <button class="filter-btn" data-filter="python">PYTHON OFFENSIF</button>
+                    <button class="filter-btn" data-filter="web">WEB & DOM</button>
+                    <button class="filter-btn" data-filter="crypto">CRYPTOGRAPHIE</button>
+                </div>
+            </div>
+
+            <div class="courses-grid" id="courses-container">
+                <!-- Course Card 1 -->
+                <div class="course-card" data-category="bash">
+                    <div class="card-badge">MODULE 01</div>
+                    <div class="card-icon">💻</div>
+                    <h3 class="course-title">Mastery du Terminal & Bash Scripting</h3>
+                    <p class="course-desc">Apprenez à dompter la ligne de commande Linux, automatiser vos scripts shell et manipuler les flux de données système.</p>
+                    <div class="course-tags">
+                        <span class="tag">Linux</span>
+                        <span class="tag">Bash</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="diff-level easy">DÉBUTANT</span>
+                        <button class="cyber-btn sm load-quest-btn" data-quest="1">LANCER LA QUÊTE ⚡</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card" data-category="web">
+                    <div class="card-badge">MODULE 02</div>
+                    <div class="card-icon">🌐</div>
+                    <h3 class="course-title">JavaScript Exploits & DOM Security</h3>
+                    <p class="course-desc">Comprenez comment fonctionne l'injection JavaScript, le contournement de formulaires et le renforcement des applications front-end.</p>
+                    <div class="course-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">DOM</span>
+                        <span class="tag">XSS Audit</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="diff-level medium">INTERMÉDIAIRE</span>
+                        <button class="cyber-btn sm load-quest-btn" data-quest="2">LANCER LA QUÊTE ⚡</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card" data-category="python">
+                    <div class="card-badge">MODULE 03</div>
+                    <div class="card-icon">🐍</div>
+                    <h3 class="course-title">Python Offensive & Data Scraper</h3>
+                    <p class="course-desc">Développez des scripts Python réactifs pour analyser des réseaux, scanner des ports et manipuler des structures JSON complexes.</p>
+                    <div class="course-tags">
+                        <span class="tag">Python 3</span>
+                        <span class="tag">Sockets</span>
+                        <span class="tag">Data Analysis</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="diff-level medium">INTERMÉDIAIRE</span>
+                        <button class="cyber-btn sm load-quest-btn" data-quest="3">LANCER LA QUÊTE ⚡</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card" data-category="crypto">
+                    <div class="card-badge">MODULE 04</div>
+                    <div class="card-icon">🔑</div>
+                    <h3 class="course-title">Cryptographie, Hashing & Chiffrement</h3>
+                    <p class="course-desc">Explorez les ciphers classiques (César, Vigenère), le chiffrement symétrique et les algorithmes de hash moderne (SHA-256).</p>
+                    <div class="course-tags">
+                        <span class="tag">Crypto</span>
+                        <span class="tag">SHA256</span>
+                        <span class="tag">Ciphers</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="diff-level hard">AVANCÉ</span>
+                        <button class="cyber-btn sm load-quest-btn" data-quest="4">LANCER LA QUÊTE ⚡</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card" data-category="web">
+                    <div class="card-badge">MODULE 05</div>
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="course-title">Regex & Log Analytics</h3>
+                    <p class="course-desc">Maîtrisez les expressions régulières pour détecter des anomalies dans les logs serveurs et extraire des marqueurs de compromission.</p>
+                    <div class="course-tags">
+                        <span class="tag">Regex</span>
+                        <span class="tag">Log Parsing</span>
+                        <span class="tag">SIEM</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="diff-level medium">INTERMÉDIAIRE</span>
+                        <button class="cyber-btn sm load-quest-btn" data-quest="5">LANCER LA QUÊTE ⚡</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card" data-category="bash">
+                    <div class="card-badge">MODULE 06</div>
+                    <div class="card-icon">💾</div>
+                    <h3 class="course-title">Reverse Engineering Base Logic</h3>
+                    <p class="course-desc">Analyse d'algorithmes et d'instructions conditionnelles pour corriger et déboguer des failles logiques dans du code existant.</p>
+                    <div class="course-tags">
+                        <span class="tag">Debugging</span>
+                        <span class="tag">Logic Flow</span>
+                        <span class="tag">Algorithms</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="diff-level hard">EXPERT</span>
+                        <button class="cyber-btn sm load-quest-btn" data-quest="6">LANCER LA QUÊTE ⚡</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CTF INTERACTIVE CODE SANDBOX -->
+        <section id="sandbox" class="cyber-section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">🧪</span> CTF CODE SANDBOX // INTERACTIVE LAB</h2>
+                <div class="section-line"></div>
+                <div class="quest-selector">
+                    <label for="select-quest">CHOISIR UN CHALLENGE :</label>
+                    <select id="select-quest" class="cyber-select">
+                        <option value="1">Quête 1 : Bypass d'Authentification (Logic Gate)</option>
+                        <option value="2">Quête 2 : Déchiffrement de Cipher César (Crypto)</option>
+                        <option value="3">Quête 3 : Analyseur de Logs & Extraction Regex</option>
+                        <option value="4">Quête 4 : Calculateur d'Empreinte Hash SHA256</option>
+                        <option value="5">Quête 5 : Nettoyeur d'Injection de Caractères</option>
+                        <option value="6">Quête 6 : Patch de Défense contre Buffer Overflow</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="sandbox-container">
+                <!-- Sandbox Left: Instructions & Objectives -->
+                <div class="sandbox-sidebar">
+                    <div class="box-header">
+                        <span class="box-icon">📋</span> BRIEFING MISSION
+                    </div>
+                    <div class="box-content" id="quest-briefing">
+                        <h3 id="quest-title" class="q-title">Quête 1 : Bypass d'Authentification</h3>
+                        <div class="q-meta">
+                            <span id="quest-diff" class="diff-level easy">DÉBUTANT</span>
+                            <span id="quest-reward" class="reward-tag">+100 XP</span>
+                        </div>
+                        <p id="quest-desc" class="q-desc">
+                            Le système d'accès exige un mot de passe et un jeton valide. Modifiez la fonction `verifyAccess` ci-contre pour qu'elle renvoie `true` lorsque le mot de passe est "admin2026" OU lorsque le token est supérieur à 9000.
+                        </p>
+                        
+                        <div class="test-cases-box">
+                            <div class="tc-header">CAS DE TEST À VALIDER :</div>
+                            <ul id="quest-tests" class="tc-list">
+                                <li><code>verifyAccess("admin2026", 100)</code> ➔ <span class="test-target">true</span></li>
+                                <li><code>verifyAccess("user", 9500)</code> ➔ <span class="test-target">true</span></li>
+                                <li><code>verifyAccess("guest", 500)</code> ➔ <span class="test-target">false</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="hint-box">
+                            <span class="hint-title">💡 CONSEIL DE HACKER :</span>
+                            <p id="quest-hint">Utilisez les opérateurs logiques `||` (OU) et `&&` (ET) en JavaScript.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sandbox Right: Interactive Code Editor & Test Console -->
+                <div class="sandbox-editor-wrapper">
+                    <div class="editor-bar">
+                        <div class="editor-tab active">solution.js</div>
+                        <div class="editor-actions">
+                            <button id="btn-reset-code" class="cyber-btn xs">RÉINITIALISER</button>
+                            <button id="btn-run-code" class="cyber-btn sm primary">EXÉCUTER & TESTER 🚀</button>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-body">
+                        <div class="line-numbers" id="line-numbers">
+                            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10
+                        </div>
+                        <textarea id="code-input" class="code-textarea" spellcheck="false" autocomplete="off">// Écrivez votre code ci-dessous
+function verifyAccess(password, token) {
+    // MODIFIER LA CONDITION CI-DESSOUS :
+    if (password === "" && token === 0) {
+        return true;
+    }
+    return false;
+}</textarea>
+                    </div>
+
+                    <!-- Test Output Results -->
+                    <div class="sandbox-console">
+                        <div class="console-header">
+                            <span>RESULTATS DE VALIDATION</span>
+                            <span id="console-status" class="status-idle">EN ATTENTE</span>
+                        </div>
+                        <div class="console-output" id="console-output">
+                            <span class="output-muted">> Cliquez sur "EXÉCUTER & TESTER" pour lancer le test du code.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: LEADERBOARD / WALL OF FAME -->
+        <section id="leaderboard" class="cyber-section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">🏆</span> HACKER WALL OF FAME // CLASSEMENT GLOBAL</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="leaderboard-grid">
+                <!-- Top Hackers Table -->
+                <div class="table-card">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>RANG</th>
+                                <th>HANDLE</th>
+                                <th>NIVEAU / TITRE</th>
+                                <th>XP TOTAL</th>
+                                <th>QUÊTES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <tr class="top-rank user-row" id="user-leaderboard-row">
+                                <td><span class="rank-num user-pos">#--</span></td>
+                                <td class="hacker-name"><span class="hacker-avatar">👤</span> YOU (Visiteur)</td>
+                                <td><span class="badge-title" id="lb-user-title">Script Kiddie</span></td>
+                                <td class="xp-cell" id="lb-user-xp">0 XP</td>
+                                <td id="lb-user-quests">0/6</td>
+                            </tr>
+                            <tr class="top-rank rank-1">
+                                <td><span class="rank-num gold">#1</span></td>
+                                <td class="hacker-name"><span class="hacker-avatar">👾</span> @cyber_ghost</td>
+                                <td><span class="badge-title elite">Black Hat Elite</span></td>
+                                <td class="xp-cell">14,250 XP</td>
+                                <td>42/42</td>
+                            </tr>
+                            <tr class="top-rank rank-2">
+                                <td><span class="rank-num silver">#2</span></td>
+                                <td class="hacker-name"><span class="hacker-avatar">⚡</span> @hex_master99</td>
+                                <td><span class="badge-title decker">Netrunner Pro</span></td>
+                                <td class="xp-cell">11,800 XP</td>
+                                <td>38/42</td>
+                            </tr>
+                            <tr class="top-rank rank-3">
+                                <td><span class="rank-num bronze">#3</span></td>
+                                <td class="hacker-name"><span class="hacker-avatar">🤖</span> @null_pointer</td>
+                                <td><span class="badge-title decker">Netrunner Pro</span></td>
+                                <td class="xp-cell">9,450 XP</td>
+                                <td>31/42</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-num">#4</span></td>
+                                <td class="hacker-name"><span class="hacker-avatar">💀</span> @zero_cool</td>
+                                <td><span class="badge-title cipher">Cipher Specialist</span></td>
+                                <td class="xp-cell">7,100 XP</td>
+                                <td>24/42</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-num">#5</span></td>
+                                <td class="hacker-name"><span class="hacker-avatar">🔍</span> @syntax_error</td>
+                                <td><span class="badge-title cipher">Cipher Specialist</span></td>
+                                <td class="xp-cell">5,900 XP</td>
+                                <td>19/42</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Live Security Feed Side Panel -->
+                <div class="feed-card">
+                    <div class="box-header">
+                        <span class="box-icon">📡</span> LIVE SYSTEM FEED
+                    </div>
+                    <div class="feed-list" id="feed-list">
+                        <div class="feed-item">
+                            <span class="feed-time">14:45:02</span>
+                            <span class="feed-text"><strong class="hl-user">@cyber_ghost</strong> a validé la quête <span class="hl-q">#42 Buffer Overflow</span> (+500 XP)</span>
+                        </div>
+                        <div class="feed-item">
+                            <span class="feed-time">14:42:19</span>
+                            <span class="feed-text"><strong class="hl-user">@hex_master99</strong> a débloqué le badge <span class="hl-q">SHA256 Master</span></span>
+                        </div>
+                        <div class="feed-item">
+                            <span class="feed-time">14:38:50</span>
+                            <span class="feed-text"><strong class="hl-user">Nouveau Hacker</strong> a rejoint le serveur depuis 192.168.1.1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="cyber-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-title">ZERODAY<span class="accent-glow">//</span>ACADEMY</span>
+                <p>La plateforme ultime de formation au cyber-code et à la recherche de failles.</p>
+            </div>
+            <div class="footer-links">
+                <span class="fl-header">COMMANDES RAPIDES</span>
+                <ul>
+                    <li><a href="#hero-cli">Terminal CLI</a></li>
+                    <li><a href="#courses">Arbre de cours</a></li>
+                    <li><a href="#sandbox">Bac à sable CTF</a></li>
+                    <li><a href="#leaderboard">Classement</a></li>
+                </ul>
+            </div>
+            <div class="footer-status">
+                <div class="status-block">
+                    <span>SECURITY HASH: <code>0x9F82A4B1</code></span>
+                    <span>ENCRYPTION: AES-256-GCM</span>
+                    <span>STATUS: OPERATIONAL</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 ZERODAY ACADEMY // TOUS DROITS RÉSERVÉS // NO LOGS POLICY</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="matrix.js"></script>
+    <script src="audio.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

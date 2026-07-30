@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethann Wantiez — Développeur Full Stack</title>
+  <meta name="description" content="Portfolio de Ethann Wantiez, Développeur Full Stack. Applications web, cybersécurité, e-commerce et santé.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="neu-header">
+    <div class="header-container container">
+      <a href="#" class="brand neu-card">
+        <span class="brand-pulse"></span>
+        <span class="brand-name">Ethann<span class="cyan-glow">.Dev</span></span>
+      </a>
+
+      <nav class="neu-nav">
+        <a href="#hero" class="neu-nav-btn active"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Accueil</span></a>
+        <a href="#projects" class="neu-nav-btn"><i class="fa-solid fa-cubes"></i> <span data-i18n="nav_projects">Projets</span></a>
+        <a href="#about" class="neu-nav-btn"><i class="fa-solid fa-user"></i> <span data-i18n="nav_about">À propos</span></a>
+        <a href="#contact" class="neu-nav-btn"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="nav_contact">Contact</span></a>
+      </nav>
+
+      <div class="header-controls">
+        <button class="lang-toggle neu-card" id="lang-toggle" title="Changer la langue / Switch language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="lang-code">FR</span>
+        </button>
+
+        <button class="theme-toggle neu-card" id="theme-toggle" title="Basculer Thème Sombre / Clair">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="hero" class="hero-section">
+      
+      <div class="profile-card neu-card">
+        <div class="profile-bg-photo">
+          <img src="assets/photo_de_moi.png" alt="Ethann Wantiez">
+        </div>
+      </div>
+
+      <div class="hero-presentation neu-card">
+        
+        <div class="hero-top-row">
+          <div class="status-badge neu-inset">
+            <span class="pulse-green"></span> <span data-i18n="availability">Disponibilité : Projets & Offres</span>
+          </div>
+          <div class="location-badge neu-inset">
+            <i class="fa-solid fa-location-dot cyan-glow"></i> Longwy / Remote
+          </div>
+        </div>
+
+        <div class="integrated-profile-header">
+          <h1 class="user-name">Ethann Wantiez</h1>
+          <p class="user-title" data-i18n="user_title">Architecte Logiciel & Développeur Full-Stack</p>
+        </div>
+
+        <div class="tech-stack-pills-row">
+          <span class="neu-pill">Node.js</span>
+          <span class="neu-pill">React.js</span>
+          <span class="neu-pill">Python</span>
+          <span class="neu-pill">PostgreSQL</span>
+          <span class="neu-pill">Docker</span>
+          <span class="neu-pill" data-i18n="and_more">et +</span>
+        </div>
+
+        <p class="hero-bio" data-i18n="hero_bio">
+          Développeur Full Stack passionné par l'ingénierie logicielle, spécialisé dans la conception d'applications web d'entreprise, la création d'architectures SaaS évolutives et le développement d'interfaces réactives à forte valeur ajoutée.
+        </p>
+
+        <div class="expertise-grid">
+          <div class="expertise-item neu-inset">
+            <i class="fa-solid fa-cloud expertise-icon"></i>
+            <div>
+              <h4 data-i18n="exp_saas_title">Applications Web & SaaS</h4>
+              <p data-i18n="exp_saas_sub">Conçues sur-mesure pour vos besoins</p>
+            </div>
+          </div>
+          <div class="expertise-item neu-inset">
+            <i class="fa-solid fa-shield-halved expertise-icon"></i>
+            <div>
+              <h4 data-i18n="exp_cyber_title">Cybersécurité & CTF</h4>
+              <p data-i18n="exp_cyber_sub">Code sécurisé & protection des données</p>
+            </div>
+          </div>
+          <div class="expertise-item neu-inset">
+            <i class="fa-solid fa-cart-shopping expertise-icon"></i>
+            <div>
+              <h4 data-i18n="exp_shop_title">E-Commerce & Boutiques</h4>
+              <p data-i18n="exp_shop_sub">Boutiques réactives avec panier en direct</p>
+            </div>
+          </div>
+          <div class="expertise-item neu-inset">
+            <i class="fa-solid fa-building expertise-icon"></i>
+            <div>
+              <h4 data-i18n="exp_corp_title">Sites Institutionnels</h4>
+              <p data-i18n="exp_corp_sub">Portails d'entreprise & vitrines haut de gamme</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#projects" class="neu-btn primary lg"><i class="fa-solid fa-arrow-down"></i> <span data-i18n="btn_discover">Découvrir mes Projets</span></a>
+          <a href="#contact" class="neu-btn primary lg"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="btn_contact">Me Contacter</span></a>
+          
+          <div class="social-links-inline">
+            <a href="https://www.linkedin.com/in/ethann-wantiez-4815b134b/" target="_blank" class="social-btn neu-card" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://wa.me/33615837784" target="_blank" class="social-btn neu-card" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:devwtz@gmail.com" class="social-btn neu-card" title="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+      <div class="section-header text-center">
+        <span class="section-tag neu-inset"><i class="fa-solid fa-folder-open"></i> <span data-i18n="tag_projects">Portfolio Officiel</span></span>
+        <h2 class="section-title"><span data-i18n="title_projects_1">Mes</span> <span class="cyan-glow" data-i18n="title_projects_2">Projets</span></h2>
+        <p class="section-sub" data-i18n="sub_projects">Présentation complète des applications réelles avec leurs technologies et outils effectifs.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <article class="project-card neu-card">
+          <div class="card-header">
+            <span class="project-type neu-inset">SaaS & Analytics Engine</span>
+            <span class="status-dot green" title="Production Ready"></span>
+          </div>
+          <div class="project-visual neu-inset visual-saas">
+            <i class="fa-solid fa-chart-line visual-icon"></i>
+            <span class="visual-label">Live Stream Metrics</span>
+          </div>
+          <div class="project-body">
+            <h3>FlowPulse</h3>
+            <p data-i18n="p1_desc">Plateforme SaaS moderne d'automatisation des workflows et d'analyse des métriques d'ingénierie en temps réel.</p>
+            
+            <div class="project-tech">
+              <span>JS ES6+</span><span>HTML5 / CSS3</span><span>LocalStorage</span><span>ROI Engine</span>
+            </div>
+
+            <div class="card-footer">
+              <a href="pro/SaaS/index.html" target="_blank" class="neu-btn sm primary"><i class="fa-solid fa-play"></i> <span data-i18n="btn_demo">Démo Live ↗</span></a>
+              <button class="neu-btn sm" onclick="openProjectModal('saas')"><i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_details">Détails</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card neu-card">
+          <div class="card-header">
+            <span class="project-type neu-inset" data-i18n="p2_type">Cyber & Éducation</span>
+            <span class="status-dot cyan" title="Deployed"></span>
+          </div>
+          <div class="project-visual neu-inset visual-cyber">
+            <i class="fa-solid fa-terminal visual-icon"></i>
+            <span class="visual-label">Cyber CTF Terminal</span>
+          </div>
+          <div class="project-body">
+            <h3>ZeroDay // Academy</h3>
+            <p data-i18n="p2_desc">Plateforme d'apprentissage du code et de la cybersécurité avec interface cyberpunk et canvas Matrix rain.</p>
+            
+            <div class="project-tech">
+              <span>HTML5 Canvas</span><span>JS ES6+</span><span>CLI Terminal</span><span>Web Audio API</span>
+            </div>
+
+            <div class="card-footer">
+              <a href="pro/Coding Academy/index.html" target="_blank" class="neu-btn sm primary"><i class="fa-solid fa-terminal"></i> <span data-i18n="btn_terminal">Terminal ↗</span></a>
+              <button class="neu-btn sm" onclick="openProjectModal('cyber')"><i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_details">Détails</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card neu-card">
+          <div class="card-header">
+            <span class="project-type neu-inset">E-Commerce & Cartoon</span>
+            <span class="status-dot pink" title="Live Shop"></span>
+          </div>
+          <div class="project-visual neu-inset">
+            <img src="assets/hero_mascot.jpg" alt="PawToon Mascot" class="card-img">
+          </div>
+          <div class="project-body">
+            <h3>PawToon 🐾</h3>
+            <p data-i18n="p3_desc">Boutique e-commerce cartoon de jouets pour animaux, avec panier réactif en tiroir et barre de livraison.</p>
+            
+            <div class="project-tech">
+              <span>Vanilla JS</span><span>CSS Cartoon</span><span>Cart Engine</span><span>LocalStorage</span>
+            </div>
+
+            <div class="card-footer">
+              <a href="pro/E-Commerce/index.html" target="_blank" class="neu-btn sm primary"><i class="fa-solid fa-cart-shopping"></i> <span data-i18n="btn_shop">Boutique ↗</span></a>
+              <button class="neu-btn sm" onclick="openProjectModal('shop')"><i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_details">Détails</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card neu-card">
+          <div class="card-header">
+            <span class="project-type neu-inset">Corporate & Legal</span>
+            <span class="status-dot gold" title="Active"></span>
+          </div>
+          <div class="project-visual neu-inset">
+            <img src="assets/hero.jpg" alt="Harvey Vance Legal" class="card-img">
+          </div>
+          <div class="project-body">
+            <h3>Harvey, Vance & Associés</h3>
+            <p data-i18n="p4_desc">Plateforme haut de gamme d'avocats d'affaires avec simulateur d'évaluation de préjudice et consultation sous scellé.</p>
+            
+            <div class="project-tech">
+              <span>HTML5 / CSS3</span><span>Case Evaluator</span><span>Modal System</span><span>Design Tokens</span>
+            </div>
+
+            <div class="card-footer">
+              <a href="pro/Cabinet Avocat/index.html" target="_blank" class="neu-btn sm primary"><i class="fa-solid fa-scale-balanced"></i> <span data-i18n="btn_consult">Consulter ↗</span></a>
+              <button class="neu-btn sm" onclick="openProjectModal('legal')"><i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_details">Détails</span></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card neu-card">
+          <div class="card-header">
+            <span class="project-type neu-inset" data-i18n="p5_type">Santé & Bien-être</span>
+            <span class="status-dot teal" title="Active"></span>
+          </div>
+          <div class="project-visual neu-inset">
+            <img src="assets/hero_clinic.jpg" alt="Cabinet Laurent" class="card-img">
+          </div>
+          <div class="project-body">
+            <h3>Cabinet Dr. Laurent</h3>
+            <p data-i18n="p5_desc">Portail médical d'ostéopathie douce avec sélecteur interactif des maux traités, réservation et FAQ en accordéon.</p>
+            
+            <div class="project-tech">
+              <span>Healthcare UX</span><span>Symptom Selector</span><span>Booking Engine</span><span>SVG Vectors</span>
+            </div>
+
+            <div class="card-footer">
+              <a href="pro/Osthéopathie/index.html" target="_blank" class="neu-btn sm primary"><i class="fa-solid fa-user-doctor"></i> <span data-i18n="btn_portal">Voir Portal ↗</span></a>
+              <button class="neu-btn sm" onclick="openProjectModal('health')"><i class="fa-solid fa-circle-info"></i> <span data-i18n="btn_details">Détails</span></button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PHILOSOPHIE / ABOUT SECTION -->
+    <section id="about" class="about-wrapper">
+      <div class="text-center" style="margin-bottom: 1.5rem;">
+        <span class="section-tag neu-inset"><i class="fa-solid fa-compass"></i> <span data-i18n="tag_about">Philosophie</span></span>
+      </div>
+
+      <div class="about-section neu-card">
+        <div class="about-grid">
+          <div class="about-intro">
+            <h2 data-i18n="title_about">L'Ingénierie au service de l'expérience</h2>
+          </div>
+          <div class="about-content">
+            <p class="lead" data-i18n="lead_about">Créer une application web ne consiste pas uniquement à écrire des lignes de code. C'est l'art d'harmoniser la performance backend, la sécurité de l'infrastructure et la beauté de l'interface utilisateur.</p>
+            <p data-i18n="p_about">Grâce à une approche tactile et moderne, j'offre une expérience visuelle fluide et intuitive, tout en garantissant des temps de réponse ultra-rapides et une maintenabilité totale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="contact-card neu-card">
+        <div class="section-header text-center">
+          <span class="section-tag neu-inset"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="tag_contact">Contact Direct</span></span>
+          <h2 class="section-title"><span data-i18n="title_contact_1">Discutons de votre</span> <span class="cyan-glow" data-i18n="title_contact_2">Prochain Projet</span></h2>
+          <p class="section-sub" data-i18n="sub_contact">Besoin d'un développeur full stack pour une application web, un SaaS ou une mission ? Transmettez votre message ci-dessous.</p>
+        </div>
+
+        <div class="contact-info-pills">
+          <a href="mailto:devwtz@gmail.com" class="info-pill neu-inset"><i class="fa-solid fa-envelope"></i> devwtz@gmail.com</a>
+          <a href="https://wa.me/33615837784" target="_blank" class="info-pill neu-inset"><i class="fa-brands fa-whatsapp"></i> +33 6 15 83 77 84</a>
+          <a href="https://www.linkedin.com/in/ethann-wantiez-4815b134b/" target="_blank" class="info-pill neu-inset"><i class="fa-brands fa-linkedin"></i> LinkedIn: Ethann Wantiez</a>
+        </div>
+
+        <form class="contact-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="input-wrapper neu-inset">
+              <i class="fa-solid fa-user input-icon"></i>
+              <input type="text" id="form-name" placeholder="Votre Nom / Société" data-i18n-ph="ph_name" required autocomplete="off">
+            </div>
+            <div class="input-wrapper neu-inset">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input type="email" id="form-email" placeholder="Adresse Email" data-i18n-ph="ph_email" required autocomplete="off">
+            </div>
+          </div>
+
+          <div class="input-wrapper neu-inset">
+            <i class="fa-solid fa-tag input-icon"></i>
+            <input type="text" id="form-subject" placeholder="Sujet (ex: Développement SaaS, Refonte Web...)" data-i18n-ph="ph_subject" required autocomplete="off">
+          </div>
+
+          <div class="input-wrapper neu-inset textarea-wrapper">
+            <i class="fa-solid fa-message input-icon"></i>
+            <textarea id="form-message" placeholder="Décrivez les objectifs de votre projet..." data-i18n-ph="ph_message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="neu-btn primary lg btn-submit">
+            <span data-i18n="btn_submit">Envoyer le Message sur WhatsApp</span>
+            <i class="fa-brands fa-whatsapp"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="modal-backdrop" id="project-modal">
+    <div class="modal-card neu-card">
+      <div class="modal-header">
+        <h3 id="modal-title">Titre du Projet</h3>
+        <button class="modal-close neu-inset" onclick="closeProjectModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+      </div>
+      <div class="modal-footer">
+        <a href="#" target="_blank" id="modal-live-btn" class="neu-btn primary sm"><i class="fa-solid fa-play"></i> <span data-i18n="btn_launch">Lancer la Démo Live ↗</span></a>
+        <button class="neu-btn sm" onclick="closeProjectModal()" data-i18n="btn_close">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="neu-footer">
+    <div class="container footer-container">
+      <p data-i18n="footer_rights">© 2026 Ethann Wantiez • Développeur Full Stack</p>
+      <p class="sub-footer" data-i18n="footer_sub">Conçu avec précision & passion sur Windows Desktop.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

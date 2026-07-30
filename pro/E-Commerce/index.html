@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawToon 🐾 | Le Royaume Cartoon des Jouets pour Animaux</title>
+  <meta name="description" content="Découvrez PawToon, la boutique e-commerce cartoon de jouets rigolos, durables et non-toxiques pour chiens, chats, oiseaux et NAC !">
+  
+  <!-- Google Fonts: Fredoka & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span>🦴 OFFRE SPECIALE CARTOON :</span>
+    <span class="badge">Livraison Gratuite dès 30€</span>
+    <span>• Code promo: <strong>PAWTOON10</strong> (-10%)</span>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header-nav">
+    <a href="#" class="logo" id="main-logo">
+      <span class="logo-icon">🐾</span>
+      <span>PawToon</span>
+    </a>
+
+    <!-- Live Search Bar -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input" placeholder="Chercher un jouet rigolo (ex: os, canard, souris)..." />
+    </div>
+
+    <!-- Actions & Cart -->
+    <div class="nav-actions">
+      <button class="btn-cartoon btn-yellow" onclick="alert('Bienvenue dans le Club PawToon ! 🐶')">
+        ⭐ Club Privé
+      </button>
+      <button class="btn-cartoon btn-pink cart-btn" id="cart-toggle-btn">
+        <span>Panier 🛒</span>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Pet Category Filter Chips -->
+  <nav class="category-nav">
+    <button class="chip-btn active" data-category="all">✨ Tous les Jouets</button>
+    <button class="chip-btn" data-category="dogs">🐶 Chiens Rigolos</button>
+    <button class="chip-btn" data-category="cats">🐱 Chats Chasseurs</button>
+    <button class="chip-btn" data-category="birds">🦜 Oiseaux Curieux</button>
+    <button class="chip-btn" data-category="small_pets">🐹 Petits NACs</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Des jouets <span>100% Cartoon</span> & ultra-fun !</h1>
+      <p class="hero-subtitle">Offrez à vos compagnons des moments de jeu magiques avec nos créations exclusives résistant aux morsures !</p>
+      
+      <div class="hero-features">
+        <span class="hero-feature-tag">🧪 100% Non-Toxique</span>
+        <span class="hero-feature-tag">🦴 Conçu avec des Vétérinaires</span>
+        <span class="hero-feature-tag">🚀 Livraison en 24h</span>
+      </div>
+
+      <div style="display: flex; gap: 15px;">
+        <a href="#products-section" class="btn-cartoon btn-pink" style="font-size: 1.15rem; padding: 12px 28px;">
+          Explorer le Catalogue 🎁
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image-wrapper">
+      <img src="./assets/images/hero_mascot.jpg" alt="Mascottes Cartoon PawToon" class="hero-img" />
+      <div class="floating-badge top-right">⭐ 99.4% Toutous Heureux</div>
+      <div class="floating-badge bottom-left">🎉 +50,000 Jouets Vendus</div>
+    </div>
+  </section>
+
+  <!-- Products Section & Toolbar -->
+  <main id="products-section">
+    <div class="section-title-container">
+      <h2 class="section-title">
+        <span>🎾 Jouets Vedettes</span>
+      </h2>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="sort-select" style="font-weight: 800; font-size: 0.95rem;">Trier par :</label>
+        <select id="sort-select" class="sort-select">
+          <option value="popular">🔥 Plus Populaires</option>
+          <option value="price-low">💰 Prix : Croissant</option>
+          <option value="price-high">💎 Prix : Décroissant</option>
+          <option value="rating">⭐ Meilleures Notes</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Dynamic Product Grid -->
+    <div class="products-grid" id="products-grid">
+      <!-- Injected by app.js -->
+    </div>
+  </main>
+
+  <!-- Customer Reviews / Testimonials -->
+  <section class="reviews-section">
+    <h2 style="font-family: var(--font-heading); font-size: 2.4rem;">💬 Avis de nos Amis à Pattounes</h2>
+    <p style="color: var(--text-muted); font-weight: 700; margin-top: 5px;">Découvrez ce que disent les vrais testeurs de nos jouets !</p>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-avatar">🐶</div>
+        <div class="review-author">Rex (Golden Retriever)</div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"L'Os Pouët-Pouët est mon préféré ! Je joue avec toute la journée et mes humains n'arrivent pas à le casser !"</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-avatar">🐱</div>
+        <div class="review-author">Princesse Caramel (Chat Persan)</div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"La Souris Cyber-Catnip me rend folle ! Son herbe à chat est d'une fraîcheur incroyable. 10/10 miou !"</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-avatar">🦜</div>
+        <div class="review-author">Coco (Perroquet Ara)</div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Les clochettes de l'échelle jungle font un super bruit ! Je valide complètement !"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cartoon Footer -->
+  <footer class="footer-cartoon">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="font-size: 1.8rem; margin-bottom: 12px;">
+          <span>🐾</span> PawToon
+        </div>
+        <p style="font-weight: 700; color: var(--text-muted);">Le monde merveilleux des jouets d'animaux au design cartoon fun & résistant.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Catégories</h4>
+        <ul class="footer-links">
+          <li><a href="#">Jouets pour Chiens 🐶</a></li>
+          <li><a href="#">Accessoires pour Chats 🐱</a></li>
+          <li><a href="#">Parcours pour Oiseaux 🦜</a></li>
+          <li><a href="#">Roues pour NAC 🐹</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Service Client</h4>
+        <ul class="footer-links">
+          <li><a href="#">Suivi de Commande 📦</a></li>
+          <li><a href="#">Politique de Retour (30 jours) 🔄</a></li>
+          <li><a href="#">Guide des Tailles & Sécurité 🛡️</a></li>
+          <li><a href="#">Contactez l'Équipe 💌</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Rejoignez la Meute 💌</h4>
+        <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Recevez 10% de réduction et des blagues d'animaux chaque semaine !</p>
+        <div style="display: flex; gap: 8px;">
+          <input type="email" placeholder="Votre email..." class="search-input" style="padding: 8px 12px; font-size: 0.85rem;" />
+          <button class="btn-cartoon btn-pink" style="padding: 8px 12px;" onclick="showToast('🎉 Inscription réussie ! Merci !')">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 PawToon Inc. Tous droits réservés. Fait avec ❤️ pour les animaux.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Product Details -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal-cartoon">
+      <button class="modal-close" id="modal-close-btn">✕</button>
+      <div class="modal-grid">
+        <div class="modal-img-container">
+          <img src="" id="modal-img" alt="Product Image" />
+        </div>
+        <div class="modal-details">
+          <span class="product-category-tag" id="modal-category">Chiens</span>
+          <h2 id="modal-title">Nom du produit</h2>
+          <div class="product-price" id="modal-price" style="font-size: 1.8rem; margin-bottom: 10px;">0.00 €</div>
+          <p class="modal-description" id="modal-description">Description du jouet...</p>
+          
+          <ul class="modal-feature-list" id="modal-features">
+            <!-- Features list -->
+          </ul>
+
+          <div class="quantity-picker">
+            <span style="font-weight: 800;">Quantité :</span>
+            <button class="qty-btn" id="qty-minus">-</button>
+            <span class="qty-val" id="modal-qty-val">1</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+
+          <button class="btn-cartoon btn-pink" id="modal-add-cart-btn" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 12px;">
+            Ajouter au Panier 🛒
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3><span>🛒 Panier Cartoon</span></h3>
+        <button class="modal-close" id="cart-close-btn" style="position: static; width:32px; height:32px; font-size:1rem;">✕</button>
+      </div>
+
+      <div class="cart-free-shipping-progress">
+        <div id="shipping-progress-text">Plus que 30.00 € pour la Livraison Gratuite 🚚</div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="shipping-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="cart-items-list" id="cart-items-list">
+        <!-- Injected cart items -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-row">
+          <span>Sous-total</span>
+          <span id="cart-subtotal">0.00 €</span>
+        </div>
+        <div class="cart-summary-row cart-total-row">
+          <span>Total TTC</span>
+          <span id="cart-total">0.00 €</span>
+        </div>
+
+        <button class="btn-cartoon btn-mint" id="checkout-btn" style="width: 100%; justify-content: center; font-size: 1.15rem; padding: 14px;">
+          Commander & Jouer ! 🎉
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Application Logic -->
+  <script src="./app.js"></script>
+</body>
+</html>
